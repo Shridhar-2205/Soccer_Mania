@@ -1,0 +1,313 @@
+body{
+    background: rgb(232, 234, 238);
+    font-family: 'Tajawal', sans-serif;
+}
+
+.inner_tab {
+    padding: 50px;
+    background-color: lightgray;
+    opacity: 0.5;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.tab a {
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}
+
+.tab a:hover {
+    text-decoration: none;
+    opacity: 1;
+    color: black;
+}
+
+.tab a:hover>.inner_tab {
+    opacity: 0.8;
+    transition-duration: 0.5s;
+}
+
+.top-margin {
+    position: relative;
+    bottom: 20px;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.down {
+    margin-top: 200px;
+}
+
+.top_performers,
+.Top_assist {
+    margin-top: 50px;
+}
+
+.center {
+    text-align: center;
+}
+
+.full_width {
+    width: 100%;
+}
+
+.ticket {
+    height: 700px;
+    background-image: url("../images/pic1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.inner_ticket {
+    padding: 50px;
+    padding-right: 150px;
+    background-color: white;
+    /* opacity: 0.9; */
+    /* border-radius: 5px; */
+    box-shadow: 2px 2px 5px grey;
+}
+
+.modal-header,
+.close {
+    background-color: #5cb85c;
+    color: white !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+#confirm_logo {
+    font-size: 130px;
+    text-align: center;
+    padding: 20px;
+}
+
+.border {
+    margin-top: 100px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.error {
+    color: red;
+}
+
+.outer_ticket
+{
+  height:250px;
+    margin-top: 30px;
+color:white;
+    border-radius: 5px;
+    padding-top: 0px;
+    background-image:  url("/images/ticket.png");
+    background-size: 100% 100%;
+       
+}
+
+.ticket_head
+{
+    /* background-color: white; */
+    border-bottom: 1px sloid grey;
+    padding:10px;
+    padding-left:15px;
+    border-radius: 5px;
+    margin-left:50px ;
+}
+
+.ticket_body
+{
+    padding:10px;
+    margin-left:80px ;
+}
+.ticket_footer{
+    padding:10px;
+    margin-left:80px ;
+}
+
+.top_20{
+    margin-top: 35px;
+}
+.carousel,
+.item {
+    height: 100%;
+    /* margin-bottom: 60px; */
+}
+.carousel{
+    height:95%;
+}
+.carousel-inner {
+    height: 100%;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.scroll_btn{
+    border-radius:40px;
+    padding: 10px;
+    font-size: 30px;
+    animation:blinkingText 1.5s infinite;
+    outline: none;
+}
+
+@keyframes blinkingText{
+	0%{		color:white;	}
+	30%{	color: white;	}
+	89%{	color:transparent;	}
+	100%{	color:white;	}
+}
+.scroll_btn:active,.scroll_btn:focus
+{
+    outline: none;
+    border:none;
+}
+
+#location{
+
+    height:750px;
+    background-image: url("../images/carousel-fifa.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color:white;
+}
+
+.top_100{
+    margin-top: 100px;
+}
+.top_150{
+    margin-top: 150px;
+}
+.top_50{
+    margin-top: 50px; 
+}
+.large{
+    font-size: 80px;
+}
+.short{
+    font-size: 30px;
+}
+
+
+#caption1{
+    background: rgba(69,122,178,0.7);
+    border-radius: 30px;
+    font-size: 40px;
+}
+.location_half{
+    background: rgba(14, 14, 15, 0.7);
+    height:750px;
+}
+
+.ticket_button{
+    font-size: 20px;
+    border-radius: 30px;
+    padding: 10px;
+    padding-bottom: 11px;
+}
+#myCarousel2{
+    height:287px;
+}
+
+.carousel-inner>.item{
+    background: rgba(14, 14, 15, 0.3);
+}
+.underline{
+    border-bottom: 2px solid grey;
+}
+
+#stat_pic{
+    background-image: url("../images/stats1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color:white;
+    height:400px;
+}
+.stats_text{
+    font-size: 50px;
+    padding-top: 170px;
+    text-align: center;
+
+}
+
+.footer
+{
+    margin-top: 80px;
+min-height:150px;
+background-color:#005353;
+color:white;
+}
+#footer{
+margin-top:50px;
+
+}
+.shift {
+letter-spacing:0.6px;
+margin-top:10px;
+}
+
+.footer span{
+
+font-size:26px;
+}
+
+.smcircle{
+    height:50px;
+    width:50px;
+    padding:10px;
+    padding-top:12px;
+    padding-left:14px;
+    background-color:white;
+    color:#005353;
+    border-radius:150px;
+    font-size:20px;
+    }
+
+    .shift {
+        letter-spacing:0.6px;
+        margin-top:10px;
+        }
+        
+        .footer span{
+        
+        font-size:26px;
+        }
+        
+      
+.social span{
+    color:white;
+    font-size:20px;
+    margin-left:10px;
+    }
+
+
+
+    .stats{
+     
+        border-bottom:1px solid white;
+    }
+    .top_border{
+border-top:1px solid white;
+    }

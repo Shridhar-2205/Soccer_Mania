@@ -1,0 +1,21 @@
+{
+  "name": "football",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.ps"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "csvtojson": "^2.0.10",
+    "debug": "^2.6.9",
+    "express": "^4.15.5",
+    "line-reader": "^0.4.0",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.5",
+    "nodeunit": "^0.11.2"
+  },
+  "devDependencies": {
+    "express-session": "^1.16.2"
+  }
+}

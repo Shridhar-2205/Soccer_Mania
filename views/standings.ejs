@@ -1,0 +1,111 @@
+<html>
+
+<head>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
+    <style>
+            body{
+                background-image:  url("/images/pic1.jpg");
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            h2{
+
+                color: white;
+            }
+    
+        </style>
+
+
+
+
+</head>
+
+<body>
+        <div id="aja">
+
+    <nav class="navbar navbar-inverse  navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">FIFA &#9917 </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/home_page">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Statistics
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                            <li><a href="/stats/">Dashboard</a></li>
+                            <li><a href="/stats/history">History Statistics</a></li>
+                            <li><a href="/stats/goal_analysis">Goal Analysis</a></li>
+                            <li><a href="/stats/clue_revenues">Club Revenues</a></li>
+                            <li><a href="/stats/delta">Delta Analysis</a></li>
+                            <!-- <li><a href="/stats/market_value">Market Values</a></li> -->
+                    </ul>
+                  </li>
+                <li><a href="/topperformer">Top Performers</a></li>
+                <li><a href="/buyticket">Tickets</a></li>
+                <li class="active"><a href="/standings">Rankings</a></li>
+                <li ><a href="/bookings">Your Bookings</a></li>
+                <li ><a href="/matches">Matches</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>  <b> <%= name %></b></a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+    <div class="container">
+        <h2 class="center">Rankings</h2>
+        <!--style="width:900px; height:800px; overflow:auto;"-->
+        <div id="tableauViz1" ></div>
+        <script>
+            function initializeViz() {
+                // JS object that points at empty div in the html
+                var placeholderDiv = document.getElementById("tableauViz1");
+                // URL of the viz to be embedded
+                var url = "https://public.tableau.com/views/Team_Standings/WorldSoccerScoreboard";
+                // An object that contains options specifying how to embed the viz
+                //https://public.tableau.com/profile/ellenn#!/vizhome/WorldIndicators/GDPpercapita
+                //https://public.tableau.com/profile/shridhar8226/#!/vizhome/FootBallAnalysis_15731554533090/Sheet1
+                var options = {
+                    width: "100%",
+                    height: "950px",
+                    hideTabs: true,
+                    hideToolbar: true,
+                };
+                viz = new tableau.Viz(placeholderDiv, url, options);
+
+            }
+            initializeViz();
+        </script>
+
+
+    </div>
+    
+    </div>
+
+
+
+
+</body>
+
+</html>

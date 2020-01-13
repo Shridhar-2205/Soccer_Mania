@@ -1,0 +1,438 @@
+<html>
+
+<head>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
+  
+
+    <style type="text/css">
+        #home_canvas {
+            position: fixed;
+        }
+
+        body {margin: 0;}
+
+        ul.sidenav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        ul.sidenav li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        ul.sidenav li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        ul.sidenav li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        div.content {
+            margin-left: 25%;
+            padding: 1px 16px;
+            height: 1000px;
+        }
+
+        @media screen and (max-width: 900px) {
+            ul.sidenav {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            ul.sidenav li a {
+                float: left;
+                padding: 15px;
+            }
+
+            div.content {margin-left: 0;}
+        }
+
+        @media screen and (max-width: 400px) {
+            ul.sidenav li a {
+                text-align: center;
+                float: none;
+            }
+        }
+
+.center{
+    text-align: center;
+    font-family: 'Tajawal', sans-serif;
+}
+.large{
+    font-size: 70px;
+}
+.heading{
+    background-color: lightgrey;
+padding-top: 1px;
+font-size: 20px;
+
+}
+.top_100{
+    margin-top: 50px;
+}
+    </style>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+</head>
+
+<body style="background-color:white; font-family: 'Tajawal', sans-serif;">
+<div id="aja">
+
+    
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">FIFA &#9917 </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ><a href="/home_page">Home</a></li>
+            
+                <li class="active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Statistics
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                                <li class="active"><a href="/stats/">Dashboard</a></li>
+                                <li><a href="/stats/history">History Statistics</a></li>
+                                <li><a href="/stats/goal_analysis">Goal Analysis</a></li>
+                                <li><a href="/stats/clue_revenues">Club Revenues</a></li>
+                                <li><a href="/stats/delta">Delta Analysis</a></li>
+                                <!--<li><a href="/stats/market_value">Market Values</a></li> -->
+                        </ul>
+                      </li>
+                 
+
+
+                <li><a href="/topperformer">Top Performers</a></li>
+                <li><a href="/buyticket">Tickets</a></li>
+                <li><a href="/standings">Rankings</a></li>
+                <li><a href="/bookings">Your Bookings</a></li>
+                <li><a href="/matches">Matches</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> <b> <%= name %></b></a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', { 'packages': ['corechart', 'bar'] });
+
+        google.charts.setOnLoadCallback(drawPieChart);
+        google.charts.setOnLoadCallback(drawBarChart);
+        google.charts.setOnLoadCallback(drawLineChart);
+        google.charts.setOnLoadCallback(drawScatterChart);
+
+
+        function drawPieChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Stadium', 'Number of matches'],
+                <% for (var i = 0; i < stadium.length; i++) {
+                -%>
+                <% if (i == stadium.length - 1) {
+                -%>
+                ["<%- stadium[i].Stadium%>", <%= stadium[i].Matches -%> ]
+                        <%} else {
+                        -%>
+                    [" <%-  stadium[i].Stadium%>", <%= stadium[i].Matches -%> ],
+                <% }
+                } -%>
+            ]);
+            var options = {
+                chartArea: {
+                    height: '100%',
+                 top:0,
+                    stroke:'black',
+                    strokeWidth:2,
+                    padding:0
+
+                }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+        function drawBarChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Players', 'Goals', 'Assists'],
+                <% for (var i = 0; i < player_stas.length; i++) {%>
+                <% if (i == player_stas.length - 1) {
+                -%>
+                ['<%= player_stas[i].Player_Name%>', <%= player_stas[i].Goals %> , <%= player_stas[i].Assist -%>]
+                        <%} else {
+                        -%>
+                    ['<%= player_stas[i].Player_Name%>', <%= player_stas[i].Goals %> , <%= player_stas[i].Assist %>],<% }
+                } -%>]);
+
+            var options = {
+
+                bar:{
+                    groupWidth:"50%"
+                },
+                chartArea: {
+                    height: '100%',
+                    left: 0,
+                    top: 0,
+                    stroke:'black',
+                    strokeWidth:2,
+                    padding:10
+                },
+                chart: {
+                   
+                },
+                orientation:"vertical"
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('barchart'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+
+        function drawLineChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', ''],
+
+                <% for (var i = 0; i < audience.length; i++) {
+                -%>
+                <% if (i == audience.length - 1) {
+                -%>
+                ['<%= audience[i].Year%>', <%= audience[i].Viewers -%>]
+                        <%} else {
+                        -%>
+                    ['<%= audience[i].Year%>', <%= audience[i].Viewers -%>],
+                <% }
+                } -%>]);
+            var options = {
+                title: 'Annual Audience(Million)',
+                hAxis: { title: 'World Cup Edition'},
+                vAxis: { title: 'Viewers' },
+                
+
+                // curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+            var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+
+            chart.draw(data, options);
+        }
+
+
+        function drawScatterChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['ID', 'lose','win', "Win rate","Matches" ],
+                <% var name, wins, lose, total, winrate
+                for (var i = 0; i < team_stats.length; i++) {
+                    name = team_stats[i].team
+                    wins = parseInt(team_stats[i].wins)
+                    lose =  parseInt(team_stats[i].loss)
+                    total = lose+wins
+                    winrate = ((wins/total)*100).toFixed(2)
+                    %>
+
+                ["<%=name%>", <%= lose%>, <%=wins%>, <%=winrate%>,  <%=total%> ],
+                <%
+                 } -%>
+
+            ]);
+
+            var options = {
+                title: 'Team Win %',
+                hAxis: { title: 'Loses'},
+                vAxis: { title: 'Wins' },
+                
+            };
+
+            var chart = new google.visualization.BubbleChart(document.getElementById('scatterchart'));
+
+            chart.draw(data, options);
+        }
+
+
+    </script>
+   
+    <div class="container-fluid top_100">
+            <h1 style="text-align: center;">Top Statistics</h1>
+        <div class="row">
+            <div class="col-md-4 chart_b" >
+<div class="" style="   box-shadow: 2px 2px 5px grey;height: 320px;">
+    <div class="heading">
+
+            <p class="center">Matches hosted by Stadiums</p>
+        </div>
+   
+                <div id="piechart" style="width: 100%; height: 280px; "></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                    <div class="" style="   box-shadow: 2px 2px 5px grey;height: 320px;">
+    <div class="heading">
+
+            <p class="center">Players performance 2018</p>
+        </div>
+                <div id="barchart" style="width: 100%; height: 300px;padding:30px;"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="" style="   box-shadow: 2px 2px 5px grey;height: 320px;">
+    <div class="heading">
+
+            <p class="center">Tickets Sold (WC 2022)</p>
+        </div>
+        <br/>
+        <br/>
+                        <h2 class="center">Total Tickets Sold</h2>
+                        <h1 class="center large">24876</h1>
+                        </div>
+
+</div>
+
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                    <div class="" style="   box-shadow: 2px 2px 5px grey;height: 320px;">
+    <div class="heading">
+
+            <p class="center">Annual WC Viewership</p>
+        </div>
+                <div id="linechart" style="width:100%; height: 280px"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                    <div class="" style="   box-shadow: 2px 2px 5px grey;height: 320px;">
+    <div class="heading">
+
+            <p class="center">Team Win Percentage (2014-2018)</p>
+        </div>
+                <div id="scatterchart" style="width:100%; height: 280px"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                    <div class="" style="   box-shadow: 2px 2px 5px grey;height: 320px;">
+    <div class="heading">
+
+            <p class="center">Team market Values ($)</p>
+        </div>
+      
+
+<figure class="highcharts-figure">
+    <div id="container" style="height:250px;"></div>
+
+</figure>
+</div>
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ''
+    },
+    subtitle: {
+    
+    },
+    xAxis: {
+        type: 'category',
+        labels: {
+            rotation: -45,
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Team Value (millions)'
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        pointFormat: 'Market Value: <b>{point.y:.1f} millions</b>'
+    },
+    series: [{
+        name: 'Population',
+        data: [
+            ['France', 24.2],
+            ['FC Bayern', 20.8],
+            ['Liverpool', 14.9],
+            ['Dortmund', 13.7],
+            ['FC Barcelona', 13.1],
+            ['Madrid', 12.7],
+            ['FC Moscow', 12.4],
+            ['Brazil', 12.2]
+           
+        ],
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            align: 'right',
+            format: '{point.y:.1f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }]
+});
+    </script>
+</div>
+
+
+        </div>
+        <br/>
+        <br/>
+    </div>
+
+
+
+
+</div>
+
+
+</body>
+
+</html>

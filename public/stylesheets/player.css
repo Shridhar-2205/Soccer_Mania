@@ -1,0 +1,10 @@
+    .col-md-4 .img-top {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+    }
+    .col-md-4:hover .img-top {
+        display: inline;
+    }

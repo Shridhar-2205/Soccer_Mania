@@ -1,0 +1,355 @@
+<html>
+
+<head>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- jQuery UI library -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script>
+        $(function () {
+            $("#date_select").datepicker({
+                minDate: 0,
+                maxDate: 365,
+                dateFormat: 'mm-dd-yy',
+                changeMonth: true,
+                changeYear: true
+            });
+            // $("#ticket_number").spinner({
+            //     min: 1,
+            //     max: 20,
+            //     step: 1,
+            //     start: 1,
+            //     numberFormat: "n",
+
+            // });
+        });
+    </script>
+    <style>
+        body {
+             background-image:  url("/images/zz.jpg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+             background-color: white; 
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">FIFA &#9917 </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/home_page">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Statistics
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                            <li><a href="/stats/">Dashboard</a></li>
+                            <li><a href="/stats/history">History Statistics</a></li>
+                            <li><a href="/stats/goal_analysis">Goal Analysis</a></li>
+                            <li><a href="/stats/clue_revenues">Club Revenues</a></li>
+                            <li><a href="/stats/delta">Delta Analysis</a></li>
+                            <!-- <li><a href="/stats/market_value">Market Values</a></li> -->
+                    </ul>
+                  </li>
+                <li><a href="/topperformer">Top Performers</a></li>
+                <li class="active"><a href="/buyticket">Tickets</a></li>
+                <li><a href="/standings">Rankings</a></li>
+                <li><a href="/bookings">Your Bookings</a></li>
+                <li><a href="/matches">Matches</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> <b> <%= name %></b></a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid top_100">
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8 ">
+                <div class="inner_ticket">
+                    <h1 class="center "> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Buy Tickets</h1>
+                    <br>
+
+                    <form class="form-horizontal " id="my_form" onSubmit="JavaScript:check(event)">
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                    <div class="form-group ">
+                                            <label class="control-label col-sm-4 " for="name ">Name:</label>
+                                            <div class="col-sm-8 ">
+                                                <input type="text " class="form-control " id="name" title="Enter alphabets only"
+                                                    placeholder="Enter name" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label col-sm-4 " for="email ">Email:</label>
+                                            <div class="col-sm-8 ">
+                                                <input type="text" class="form-control" title="Please enter a valid email address"
+                                                    id="email" placeholder="Enter email" required>
+                                            </div>
+                                        </div>
+                
+                                        <div class="form-group ">
+                                            <label class="control-label col-sm-4 " for="match_info ">Match Info:</label>
+                                            <div class="col-sm-8 ">
+                                                <select class="form-control " id="match_info" required>
+                                                    <option value="Match 1">Match-1: Fc Barcelona vs Fc Bayern Munich</option>
+                                                    <option value="Match 2">Match-2: Real Madrid vs Juventus</option>
+                                                    <option value="Match 3">Match-3: Manchester City vs Liverpool</option>
+                                                    <option value="Match 4">Match-4: Paris St Germain vs Arsenal</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label col-sm-4 " for="card_number">Card Number:</label>
+                                            <div class="col-sm-8 ">
+                                                <input type="text " class="form-control" id="card_number"
+                                                    title="Required format: xxxx-xxxx-xxxx-xxxx" placeholder="xxxx-xxxx-xxxx-xxxx "
+                                                    required>
+                                            </div>
+                                        </div>
+                
+
+
+
+
+
+
+                            </div>
+                            <div class="col-md-6">
+
+
+                                    <div class="form-group ">
+                                            <label class="control-label col-sm-4 " for="card_name ">Name on card:</label>
+                                            <div class="col-sm-8 ">
+                                                <input type="text " class="form-control " id="card_name" title="Enter alphabets only"
+                                                    placeholder="Name on card " required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label col-sm-4 " for="cvv ">CVV:</label>
+                                            <div class="col-sm-8 ">
+                                                <input type="text " class="form-control " id="cvv" placeholder="CVV- 3 digits "
+                                                    title="3 digits only" required>
+                                            </div>
+                                        </div>
+                
+                                        <div class="form-group ">
+                                            <label class="control-label col-sm-4 " for="date_select">Date</label>
+                                            <div class="col-sm-8 ">
+                                                <input type="text" class="form-control " id="date_select" readonly="readonly" required>
+                                            </div>
+                                        </div>
+                
+                                        <div class="form-group ">
+                                            <label class="control-label col-sm-4 " for="ticket_number">Amount</label>
+                                            <div class="col-sm-8 ">
+                                                <input type="number" class="form-control " id="ticket_number" min="1" max="20" value="1"
+                                                    required>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                  <br/>
+                  <br/>
+
+                  
+
+                        <div class="form-group ">
+                            <div class="center">
+                                <button type="submit" class="btn btn-success btn-lg " style="margin-left: 70px;"
+                                    id="modal_button">Submit</button>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-md-2 ">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Ticket Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="payment_confirm">
+                        <span id="confirm_logo" class="fa fa-check-circle-o"></span>
+
+
+                    </div>
+                    <p>
+                        <h1>Hi <span id="modal_name"></span></h1>You have booked <span id="modal_match_ticket"></span>
+                        tickets for the <span id="modal_match_info"></span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="error_modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f55659;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Invalid Input</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="payment_confirm">
+                        <span id="confirm_logo" class="glyphicon glyphicon-remove-circle"></span>
+
+
+                    </div>
+                    <h4 id="error_display" class="error">
+                    </h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        function check(e) {
+            e.preventDefault();
+
+
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var match_info = $("#match_info").val();
+            var card_number = $("#card_number").val();
+            var card_name = $("#card_name").val();
+            var cvv = $("#cvv").val();
+            var date = $("#date_select").val();
+
+            var name_pattern = /^[A-za-z\s]*$/.test(name);
+            // alert(name_pattern);
+            var email_pattern = /^[A-Za-z0-9_\.-]+@[a-z]+\.[a-z]{2,}$/.test(email);
+            // var email_pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+            var card_number_pattern = /^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/.test(card_number);
+            var card_name_pattern = /^[A-za-z\s]*$/.test(name);
+            var cvv_pattern = /^[0-9]{3}$/.test(cvv);
+            var error = "";
+
+            if (!cvv_pattern) {
+                error = "Enter a valid CVV. Desired pattern: 3 Digits";
+            }
+
+            if (!card_name_pattern) {
+                error = "Enter a valid card name.Desired pattern: Enter only alphabets";
+            }
+            if (!card_number_pattern) {
+                error = "Enter a valid Card Number. Desired Pattern: xxxx-xxxx-xxxx-xxxx";
+            }
+            if (!email_pattern) {
+                error = "Enter a valid email address";
+            }
+
+            if (!name_pattern) {
+                error = "Enter a valid name.Desired pattern: Enter only alphabets";
+            }
+            console.log(date)
+            if (!date) {
+                error = "Select a date."
+            }
+
+            if (error === "") {
+
+                document.getElementById("modal_name").innerHTML = document.getElementById("name").value;
+                document.getElementById("modal_match_info").innerHTML = document.getElementById("match_info").value;
+                document.getElementById("modal_match_ticket").innerHTML = document.getElementById("ticket_number").value;
+
+
+                $.post("/getData", {
+                    name: $("#name").val(),
+                    email: $("#email").val(),
+                    match: $("#match_info").val()
+                }, function (data, status) {
+                    alert(status);
+                });
+
+                $("#myModal").modal();
+
+                document.getElementById("my_form").reset();
+
+
+            } else {
+                $("#modal_button").effect("shake");
+                document.getElementById("error_display").innerHTML = error;
+                $("#error_modal").modal();
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
