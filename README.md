@@ -1,1 +1,10 @@
-# Football-App
+#Steps to run this App
+
+Step 1:
+	npm install
+   
+  Step 2:
+        node app.js
+ 
+  step 3:
+        goto http://localhost:5000/
